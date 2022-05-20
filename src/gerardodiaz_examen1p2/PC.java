@@ -47,6 +47,11 @@ public class PC {
     public void setHostname(String hostname) {
         this.hostname = hostname;
     }
+
+    @Override
+    public String toString() {
+        return "PC{" + "IP=" + IP + ", mascara=" + mascara + ", hostname=" + hostname + '}';
+    }
     
     
     

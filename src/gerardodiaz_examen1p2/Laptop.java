@@ -55,6 +55,11 @@ public class Laptop extends PC{
     public void setRGB(String RGB) {
         this.RGB = RGB;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Laptop{" + "marca=" + marca + ", pantalla=" + pantalla + ", RGB=" + RGB + '}';
+    }
     
     
     

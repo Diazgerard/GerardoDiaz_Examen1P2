@@ -66,6 +66,11 @@ public class PC_Escritorio extends PC{
     public void setGrafica(String grafica) {
         this.grafica = grafica;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "PC_Escritorio{" + "ram=" + ram + ", capacidad=" + capacidad + ", almacimiento=" + almacimiento + ", grafica=" + grafica + '}';
+    }
     
     
     
