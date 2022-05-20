@@ -15,6 +15,7 @@ import java.util.StringTokenizer;
  */
 public class GerardoDiaz_Examen1P2 {
     static Scanner lea = new Scanner(System.in);
+    static ArrayList todo = new ArrayList();
     static ArrayList<Object> PC = new ArrayList();
     static ArrayList<Object> LAP = new ArrayList();
 
@@ -22,6 +23,7 @@ public class GerardoDiaz_Examen1P2 {
     static ArrayList<Integer> numbers2 = new ArrayList();
     
     static ArrayList<String>  binarioImp = new ArrayList();
+    static ArrayList<String>  binarioImp2 = new ArrayList();
 
     /**
      * @param args the command line arguments
@@ -149,6 +151,7 @@ public class GerardoDiaz_Examen1P2 {
                                             
                                             PC_Escritorio PCE = new PC_Escritorio(ram, capacidad, almacenamiento, grafica, ip, red, name);
                                             PC.add(PCE);
+                                            todo.add(PCE);
                                         }
                                         break;
                                         case 2:{
@@ -222,7 +225,7 @@ public class GerardoDiaz_Examen1P2 {
                                             laptop.setRGB(RGB);
                                             
                                             int opcio = 0;
-                                            while (opcio != 3) {
+                                           
                                                 System.out.println("-------------------------------");
                                                 System.out.println("Ingrese Si tiene RGB: ");
                                                 System.out.println("1) SI");
@@ -241,9 +244,10 @@ public class GerardoDiaz_Examen1P2 {
                                                     }
                                                     break;
                                                 }
-                                            }
+                                            
                                             Laptop lap = new Laptop(marca, pantalla, RGB, ip, red, name);
                                             LAP.add(lap);
+                                            todo.add(lap);
                                         }
                                         break;
                                         case 2:{
@@ -279,25 +283,72 @@ public class GerardoDiaz_Examen1P2 {
                 }// ingresar PC
                 break;
                 case 2: {
-                    int cont = 4;
-                    int[] numeros = new int[cont];
-                    convertir(ips);
-                    numeros = lectura(cont);
-                    pin(numeros);
-                    System.out.println();
-                    System.out.println("------mascara-------");
-                    int[] numeros2 = new int[cont];
-                    convertir2(mascara);
-                    numeros2 =  lectura2(cont);
-                    pin2(numeros2);
-                    
-                    System.out.print(binarioImp);
-                    
+                    for (Object object : LAP) {
+                        if (object instanceof PC) {
+                            System.out.println("" + LAP.indexOf(object) + "- " + object);
+                        }
+
+                    }
+                    for (Object object : PC) {
+                        if (object instanceof PC) {
+                            System.out.println("" + PC.indexOf(object) + "- " + object);
+                        }
+
+                    }
+                    for (int i = 0; i < todo.size(); i++) {
+                        int cont = 4;
+                        int[] numeros = new int[cont];
+                        convertir(ips);
+                        numeros = lectura(cont);
+                        pin(numeros);
+                        System.out.println();
+                        //System.out.println("------mascara-------");
+                        int[] numeros2 = new int[cont];
+                        convertir2(mascara);
+                        numeros2 = lectura2(cont);
+                        pin2(numeros2);
+
+                        System.out.print(binarioImp);
+                        System.out.println();
+                        System.out.print(binarioImp2);
+                        System.out.println();
+
+                        System.out.println(comparar(binarioImp, binarioImp2));
+                        System.out.println();
+                    }
+
                 }
                 break;
                     
             }
         }
+    }
+    public static String comparar(ArrayList<String> string, ArrayList<String> string2){
+        int contador = 0;
+        String ping = "";
+        for (int i = 0; i < string2.size(); i++) {
+            String ver2 = string2.get(i);
+            for (int j = 0; j < ver2.length(); j++) {
+                if(ver2.charAt(i)=='1'){
+                    contador++;
+                }
+            }
+        }
+        
+        for (int i = 0; i < contador; i++) {
+            String ver = string.get(i);
+            String ver2 = string2.get(i);
+            if(ver.charAt(i)==ver2.charAt(i)){
+                ping += "ping exitoso";
+            }else{
+                ping += "Computadora inalcanzable";
+            }
+            
+        }
+        
+        
+        return ping;
+        
     }
     
     public static int[] convertir(ArrayList<String> numeros){
@@ -363,7 +414,7 @@ public class GerardoDiaz_Examen1P2 {
 
             }
 
-            System.out.println("Primero numero " + ahora + binario);
+           // System.out.println("Primero numero " + ahora + binario);
             binary += ahora;
             binary += binario;
             // System.out.println("-------------------------------------------------------");
@@ -395,7 +446,7 @@ public class GerardoDiaz_Examen1P2 {
             }
 
             
-            System.out.println("Segundo numero:  " + ahora1 + binario1);
+            //System.out.println("Segundo numero:  " + ahora1 + binario1);
             binary += ahora1;
             binary += binario1;
             
@@ -428,7 +479,7 @@ public class GerardoDiaz_Examen1P2 {
             }
 
             
-            System.out.println("Tercer numero:  " + ahora2 + binario2);
+            //System.out.println("Tercer numero:  " + ahora2 + binario2);
             binary += ahora2;
             binary += binario2;
             
@@ -460,7 +511,7 @@ public class GerardoDiaz_Examen1P2 {
             }
 
             
-            System.out.println("Cuarto numero:  " + ahora3 + binario3);
+            //System.out.println("Cuarto numero:  " + ahora3 + binario3);
             binary += ahora3;
             binary += binario3;
             
@@ -476,6 +527,7 @@ public class GerardoDiaz_Examen1P2 {
     }
      
      public static String  pin2(int [] numeros){
+         String binary = "";
         for (int i = 0; i < numeros.length; i++) {
 
             String binario = "";
@@ -503,7 +555,9 @@ public class GerardoDiaz_Examen1P2 {
 
             }
 
-            System.out.println("Primero numero " + ahora + binario);
+            //System.out.println("Primero numero " + ahora + binario);
+            binary += ahora;
+            binary += binario;
             //System.out.println("-------------------------------------------------------");
             
             
@@ -533,8 +587,9 @@ public class GerardoDiaz_Examen1P2 {
             }
 
             
-            System.out.println("Segundo numero:  " + ahora1 + binario1);
-            
+           // System.out.println("Segundo numero:  " + ahora1 + binario1);
+            binary += ahora1;
+            binary += binario1;
             
             //System.out.println("-------------------------------------------------------");
             
@@ -565,8 +620,9 @@ public class GerardoDiaz_Examen1P2 {
             }
 
             
-            System.out.println("Tercer numero:  " + ahora2 + binario2);
-            
+            //System.out.println("Tercer numero:  " + ahora2 + binario2);
+            binary += ahora2;
+            binary += binario2;
             
             //System.out.println("-------------------------------------------------------");
             
@@ -596,12 +652,13 @@ public class GerardoDiaz_Examen1P2 {
             }
 
             
-            System.out.println("Cuarto numero:  " + ahora3 + binario3);
-            
+            //System.out.println("Cuarto numero:  " + ahora3 + binario3);
+            binary += ahora3;
+            binary += binario3;
             
             //System.out.println("-------------------------------------------------------");
             
-            
+            binarioImp2.add(binary);
             
             
             return binario;
@@ -609,6 +666,7 @@ public class GerardoDiaz_Examen1P2 {
         return "Trabajo realizado";
 
     }
+     
     
 }
 
