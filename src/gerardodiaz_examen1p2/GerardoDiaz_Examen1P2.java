@@ -202,6 +202,7 @@ public class GerardoDiaz_Examen1P2 {
                                             ips.add(tokens[1]);
                                             ips.add(tokens[2]);
                                             ips.add(tokens[3]);
+                                            escri.setIP(ip);
                                             laptop.setIP(ip);
                                             
                                             System.out.print("Ingrese la mascara de red: ");
@@ -211,10 +212,12 @@ public class GerardoDiaz_Examen1P2 {
                                             mascara.add(tokens1[1]);
                                             mascara.add(tokens1[2]);
                                             mascara.add(tokens1[3]);
+                                            escri.setMascara(red);
                                             laptop.setMascara(red);
                                             
                                             System.out.print("Ingrese hostname: ");
                                             String name = lea.next();
+                                            escri.setHostname(name);
                                             laptop.setHostname(name);
                                             
                                             System.out.print("Ingrese Marca: ");
@@ -304,6 +307,9 @@ public class GerardoDiaz_Examen1P2 {
                         }
 
                         for (int i = 0; i < todo.size(); i++) {
+                            ips = new ArrayList();
+                            mascara = new ArrayList();
+        
                             int cont = 4;
                             int[] numeros = new int[cont];
                             convertir(ips);
@@ -352,25 +358,25 @@ public class GerardoDiaz_Examen1P2 {
             ver2 = (String)string2.get(i);
         }
       
-        for (int i = 0; i < ver2.length(); i++) {
-            if (ver2.charAt(i) == '1') {
+        for (int r = 0; r < ver2.length(); r++) {
+            if (ver2.charAt(r) == '1') {
                 contador++;
             }
         }
         
         
         String vamos = "";
-        for (int i = 0; i < contador; i++) {
+        for (int g = 0; g < contador; g++) {
             vamos += ver;
         }
         
         String vamos2 ="";
-        for (int i = 0; i < contador; i++) {
+        for (int d = 0; d < contador; d++) {
             vamos2 += ver2;
         }
         
-        System.out.println(vamos);
-        System.out.println(vamos2);
+//        System.out.println(vamos);
+//        System.out.println(vamos2);
         
         if(vamos.equals(vamos2)){
             System.out.println("Ping exitoso");
