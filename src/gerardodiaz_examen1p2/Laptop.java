@@ -56,10 +56,10 @@ public class Laptop extends PC{
         this.RGB = RGB;
     }
 
-    @Override
-    public String toString() {
-        return super.toString() + "Laptop{" + "marca=" + marca + ", pantalla=" + pantalla + ", RGB=" + RGB + '}';
-    }
+//    @Override
+//    public String toString() {
+//        return super.toString() + "Laptop{" + "marca=" + marca + ", pantalla=" + pantalla + ", RGB=" + RGB + '}';
+//    }
     
     
     

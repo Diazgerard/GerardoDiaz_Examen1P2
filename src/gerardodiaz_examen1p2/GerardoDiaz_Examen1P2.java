@@ -34,6 +34,8 @@ public class GerardoDiaz_Examen1P2 {
        
         ArrayList<String> ips = new ArrayList();
         ArrayList<String> mascara = new ArrayList();
+        
+        
         int opci=0;
         while(opci!=3){
             System.out.println("-------------------------------");
@@ -191,6 +193,8 @@ public class GerardoDiaz_Examen1P2 {
                                     System.out.println("-------------------------------");
                                     switch (op) {
                                         case 1: {
+                                            
+                                            
                                             System.out.print("Ingrese IP: ");
                                             String ip = lea.next();
                                             String tokens[] = ip.split("\\.");
@@ -282,39 +286,51 @@ public class GerardoDiaz_Examen1P2 {
                 }// ingresar PC
                 break;
                 case 2: {
-                    for (Object object : LAP) {
-                        if (object instanceof PC) {
-                            System.out.println("" + LAP.indexOf(object) + "- " + object);
+             
+                    System.out.print(escri.getHostname() + "#");
+                    String ping = lea.next();
+                    if (ping.equalsIgnoreCase("show")) {
+                        for (Object object : LAP) {
+                            if (object instanceof PC) {
+                                System.out.println("" + LAP.indexOf(object) + "- " + object);
+                            }
+
+                        }
+                        for (Object object : PC) {
+                            if (object instanceof PC) {
+                                System.out.println("" + PC.indexOf(object) + "- " + object);
+                            }
+
                         }
 
-                    }
-                    for (Object object : PC) {
-                        if (object instanceof PC) {
-                            System.out.println("" + PC.indexOf(object) + "- " + object);
+                        for (int i = 0; i < todo.size(); i++) {
+                            int cont = 4;
+                            int[] numeros = new int[cont];
+                            convertir(ips);
+                            numeros = lectura(cont);
+                            pin(numeros);
+                            System.out.println();
+                            //System.out.println("------mascara-------");
+                            int[] numeros2 = new int[cont];
+                            convertir2(mascara);
+                            numeros2 = lectura2(cont);
+                            pin2(numeros2);
+
+//                            System.out.print(binarioImp);
+//                            System.out.println();
+//                            System.out.print(binarioImp2);
+//                            System.out.println();
+
+                            comparar(binarioImp, binarioImp2);
+                            System.out.println();
                         }
+                    } else if (ping.equalsIgnoreCase("exit")){
+                        opci = 3;
 
+                    }else{
+                        
                     }
-                    for (int i = 0; i < todo.size(); i++) {
-                        int cont = 4;
-                        int[] numeros = new int[cont];
-                        convertir(ips);
-                        numeros = lectura(cont);
-                        pin(numeros);
-                        System.out.println();
-                        //System.out.println("------mascara-------");
-                        int[] numeros2 = new int[cont];
-                        convertir2(mascara);
-                        numeros2 = lectura2(cont);
-                        pin2(numeros2);
-
-                        System.out.print(binarioImp);
-                        System.out.println();
-                        System.out.print(binarioImp2);
-                        System.out.println();
-
-                        comparar(binarioImp, binarioImp2);
-                        System.out.println();
-                    }
+                    
 
                 }
                 break;
@@ -327,31 +343,43 @@ public class GerardoDiaz_Examen1P2 {
         String ver2  = "";
         String ver ="";
         int contador = 0;
-        
+        String ping = "";
         for (int l = 0; l < string.size(); l++) {
-            ver += string.get(l);
+            ver += (String)string.get(l);
             
         }
-        
-        for (int l = 0; l < string.size(); l++) {
-            ver += string.get(l);
-            
+        for (int i = 0; i < string2.size(); i++) {
+            ver2 = (String)string2.get(i);
         }
-
+      
         for (int i = 0; i < ver2.length(); i++) {
             if (ver2.charAt(i) == '1') {
                 contador++;
             }
         }
-
+        
+        
+        String vamos = "";
         for (int i = 0; i < contador; i++) {
-            if (ver.charAt(i) == ver2.charAt(i)) {
-                System.out.println("ping exitoso");
-            } else {
-                System.out.println("Computadora inalcanzable");
-            }
-
+            vamos += ver;
         }
+        
+        String vamos2 ="";
+        for (int i = 0; i < contador; i++) {
+            vamos2 += ver2;
+        }
+        
+        System.out.println(vamos);
+        System.out.println(vamos2);
+        
+        if(vamos.equals(vamos2)){
+            System.out.println("Ping exitoso");
+        }else{
+            System.out.println("Computadora Inalcanzable");
+        }
+        
+
+        
         
         
     }
