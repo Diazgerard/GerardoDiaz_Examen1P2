@@ -108,7 +108,7 @@ public class GerardoDiaz_Examen1P2 {
                                                 System.out.println("Ingrese Tipo de Almacenamiento");
                                                 System.out.println("1) HDD");
                                                 System.out.println("2) SSD");
-                                                System.out.println("3) Salir");
+                                               
                                                 System.out.print("Ingrese una opcion: ");
                                                 opcion= lea.nextInt();
                                                 System.out.println("-------------------------------");
@@ -230,7 +230,6 @@ public class GerardoDiaz_Examen1P2 {
                                                 System.out.println("Ingrese Si tiene RGB: ");
                                                 System.out.println("1) SI");
                                                 System.out.println("2) NO");
-                                                System.out.println("3) Salir");
                                                 System.out.print("Ingrese una opcion: ");
                                                 opcio = lea.nextInt();
                                                 System.out.println("-------------------------------");
@@ -313,7 +312,7 @@ public class GerardoDiaz_Examen1P2 {
                         System.out.print(binarioImp2);
                         System.out.println();
 
-                        System.out.println(comparar(binarioImp, binarioImp2));
+                        comparar(binarioImp, binarioImp2);
                         System.out.println();
                     }
 
@@ -323,31 +322,37 @@ public class GerardoDiaz_Examen1P2 {
             }
         }
     }
-    public static String comparar(ArrayList<String> string, ArrayList<String> string2){
+    public static void  comparar(ArrayList<String> string, ArrayList<String> string2){
+       
+        String ver2  = "";
+        String ver ="";
         int contador = 0;
-        String ping = "";
-        for (int i = 0; i < string2.size(); i++) {
-            String ver2 = string2.get(i);
-            for (int j = 0; j < ver2.length(); j++) {
-                if(ver2.charAt(i)=='1'){
-                    contador++;
-                }
-            }
-        }
         
-        for (int i = 0; i < contador; i++) {
-            String ver = string.get(i);
-            String ver2 = string2.get(i);
-            if(ver.charAt(i)==ver2.charAt(i)){
-                ping += "ping exitoso";
-            }else{
-                ping += "Computadora inalcanzable";
-            }
+        for (int l = 0; l < string.size(); l++) {
+            ver += string.get(l);
             
         }
         
+        for (int l = 0; l < string.size(); l++) {
+            ver += string.get(l);
+            
+        }
+
+        for (int i = 0; i < ver2.length(); i++) {
+            if (ver2.charAt(i) == '1') {
+                contador++;
+            }
+        }
+
+        for (int i = 0; i < contador; i++) {
+            if (ver.charAt(i) == ver2.charAt(i)) {
+                System.out.println("ping exitoso");
+            } else {
+                System.out.println("Computadora inalcanzable");
+            }
+
+        }
         
-        return ping;
         
     }
     
@@ -359,6 +364,8 @@ public class GerardoDiaz_Examen1P2 {
         }
          return temporal;
     } 
+    
+    
     public static int[] lectura(int size){
         int[] temporal = new int[size];
         for (int i = 0; i < temporal.length; i++) {
@@ -367,6 +374,8 @@ public class GerardoDiaz_Examen1P2 {
         }
         return temporal;
     }
+    
+    
     public static int[] convertir2(ArrayList<String> numeros){
         int[] temporal = new int[numeros.size()];
         for (int i = 0; i < numeros.size(); i++) {
@@ -375,6 +384,8 @@ public class GerardoDiaz_Examen1P2 {
         }
          return temporal;
     } 
+    
+    
     public static int[] lectura2(int size){
         int[] temporal = new int[size];
         for (int i = 0; i < temporal.length; i++) {
